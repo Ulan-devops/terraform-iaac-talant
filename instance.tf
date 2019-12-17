@@ -3,6 +3,7 @@ resource "aws_instance" "web12" {
   instance_type = "t2.micro" 
   
   key_name = aws_key_pair.deployer.key_name
+  user_data = file("userdata_file")
 
 tags = { 
     Name = "HelloWorld" 
