@@ -4,6 +4,7 @@ resource "aws_instance" "web12" {
   
   key_name = aws_key_pair.deployer.key_name
   user_data = file("userdata_file")
+  security_groups = ["allow_ssh"]
 
 tags = { 
     Name = "HelloWorld" 
