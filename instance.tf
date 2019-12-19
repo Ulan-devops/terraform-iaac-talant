@@ -8,6 +8,6 @@ resource "aws_instance" "web12" {
   security_groups = ["allow_ssh"]
 
 tags = { 
-    Name = "HelloWorld".count
+    Name = "HelloWorld"${count.index+1}
   } 
 } 
