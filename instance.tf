@@ -11,5 +11,7 @@ resource "aws_instance" "web12" {
   tags = { 
     Name = "HelloWorld${count.index +1}"
   }
-   
+  lifecycle {
+    prevent_destroy = true
+  } 
 } 
