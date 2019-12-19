@@ -1,4 +1,2 @@
-output "bucket_name" { 
-
-    value = aws_s3_bucket.bucket_resource.talant-tf-bucket
-}
+output "bucket_name"{ 
+    value = aws_s3_bucket.bucket_resource.talant-tf-bucket }
