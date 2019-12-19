@@ -7,7 +7,9 @@ resource "aws_instance" "web12" {
   user_data = file("userdata_file")
   security_groups = ["allow_ssh"]
 
-tags = { 
-    Name = "HelloWorld"${count.index+1}
-  } 
+
+  tags = { 
+    Name = "HelloWorld${count.index +1}"
+  }
+   
 } 
