@@ -3,5 +3,5 @@ resource "aws_route53_record" "www" {
   name    = "www.talantzon.com" 
   type    = "A" 
   ttl     = "60" 
-  records = [aws_instace_web12.public_ip] 
+  records = [aws_instace.web12.public_ip] 
 } 
