@@ -1,5 +1,5 @@
 resource "aws_instance" "web12" { 
-  count     = 2
+  count     = 1
   ami           = var.ami
   instance_type = "t2.micro" 
   
