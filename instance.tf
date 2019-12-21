@@ -3,9 +3,9 @@ resource "aws_instance" "web12" {
   ami           = var.ami
   instance_type = var.instance_type 
   
-  key_name = 
+  key_name = var.key_pair
   user_data = file("userdata_file")
-  security_groups = 
+  security_groups = var.sec_group 
 
 
   tags = { 
