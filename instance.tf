@@ -3,7 +3,7 @@ resource "aws_instance" "web12" {
   ami           = var.ami
   instance_type = var.instance_type 
   
-  key_name = var.key_pair
+  key_name = aws_key_pair.deployer.key_name
   user_data = file("userdata_file")
   security_groups = var.sec_group 
 
