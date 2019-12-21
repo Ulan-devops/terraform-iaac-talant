@@ -9,7 +9,7 @@ resource "aws_instance" "web12" {
 
 
   tags = { 
-    Name = "HelloWorld"$(count +1)
+    Name = "HelloWorld$(count.index +1)"
   }
 /*   lifecycle {
     prevent_destroy = true
