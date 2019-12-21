@@ -1,19 +1,13 @@
 variable "ami" {
   }
 
-variable "region" {
-}
+variable "region" {}
 
-variable "instance_type" {
-}
+variable "instance_type" {}
 
-variable "num_of_instance" {
-  
-}
+variable "num_of_instance" {}
 
-variable "sec_group" {
-  
-}
+variable "sec_group" {}
 
 
 
