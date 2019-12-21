@@ -11,10 +11,10 @@ resource "aws_instance" "web12" {
   tags = { 
     Name = "HelloWorld$(count.index +1)"
   }
-/*   lifecycle {
-    prevent_destroy = true
+  lifecycle {
+    prevent_destroy = false
   } 
-}  */
+} 
 
 /* resource "aws_instace" "new_instace" {
   ami           = "ami-0b2d8d1abb76a53d8" 
