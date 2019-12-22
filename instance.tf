@@ -18,11 +18,11 @@ provisioner "remote-exec" {
     inline = [
       "sudo yum install httpd -y",      
     ]
-
+}
   tags = { 
     Name = "HelloWorld$(count.index +1)"
   }
-}
+
   lifecycle{
     prevent_destroy = false
   } 
