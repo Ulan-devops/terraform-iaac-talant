@@ -22,10 +22,12 @@ provisioner "remote-exec" {
   tags = { 
     Name = "HelloWorld$(count.index +1)"
   }
-  lifecycle {
+}
+  lifecycle{
     prevent_destroy = false
   } 
-} 
+ 
+}
 
 /* resource "aws_instace" "new_instace" {
   ami           = "ami-0b2d8d1abb76a53d8" 
