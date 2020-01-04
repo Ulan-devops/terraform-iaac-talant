@@ -16,3 +16,20 @@ resource "aws_iam_group_membership" "developers_team" {
   group = aws_iam_group.developers.name
 }
 
+resource "aws_iam_policy" "admin_policy" {
+  name = "admin_policy_talant" 
+  path = "/" 
+  description = "admin policy created by Talant" 
+  policy = <<EOF 
+{
+"Version": "2012-10-17", 
+"Statement": [ 
+{ 
+"Effect": "Allow", 
+"Action": "*", 
+"Resource": "*" 
+} 
+] 
+} 
+EOF 
+} 
