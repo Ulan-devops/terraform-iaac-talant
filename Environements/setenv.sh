@@ -6,17 +6,16 @@ then
    echo "e.g. source ./setenv configurations/data-rnd-us-vet1-v1" 
    return 1 
 fi 
- 
+​
+​
 if [ -z "$1" ] 
 then 
    echo "setenv: You must provide the name of the configuration file." 
    echo "e.g. source ./setenv configurations/data-rnd-us-vet1-v1" 
    return 1 
 fi 
- 
- 
- 
- 
+​
+​
 # Get directory we are running from 
 DIR=$(pwd) 
 DATAFILE="$DIR/$1" 
@@ -24,13 +23,11 @@ if [ ! -d "$DIR/configurations" ]; then
     echo "setenv: Must be run from the root directory of the terraform project." 
     return 1 
 fi 
+​
 if [ ! -f "$DATAFILE" ]; then 
     echo "setenv: Configuration file not found: $DATAFILE" 
     return 1 
 fi 
- 
- 
- 
 # Get env from DATAFILE 
 ENVIRONMENT=$(sed -nr 's/^\s*environment\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE") 
 S3BUCKET=$(sed -nr 's/^\s*s3_bucket\s*=\s*"([^"]*)".*$/\1/p' "$DATAFILE") 
@@ -69,14 +66,14 @@ then
    echo "setenv: 's3_tfstate_file' variable not set in configuration file." 
    echo "e.g. s3_tfstate_file=\"infrastructure.tfstate\"" 
 return 1 
-fi 
-cat << EOF > "$DIR/backend.tf" 
-terraform { 
-backend "s3" {
+fi
+cat << EOF > "$DIR/backend.tf"
+terraform {
+    backend "s3" {
     bucket = "${S3BUCKET}"
     key = "${S3BUCKETPROJ}/${S3BUCKETREGION}/${S3BUCKETTYPE}/${ENVIRONMENT}/${S3TFSTATEFILE}"
-    region = "${S3BUCKETREGION}"
-    }
-    }
-EOF 
+    region = "${S3BUCKETREGION}" 
+  }
+}
+EOF
 cat backend.tf 
