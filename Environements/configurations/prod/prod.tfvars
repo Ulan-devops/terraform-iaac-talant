@@ -1,6 +1,6 @@
-ami                  = ""
-instance_type        = ""
-key_name             = ""
+ami                  = "ami-00068cd7555f543d5"
+instance_type        = "t2.micro"
+key_name             = "con-emu-talant"
 
 environment = "prod" 
 s3_bucket = "data-talant-us-east1"          #Will be used to set backend.tf 
