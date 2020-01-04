@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "backend-state-talant"
+    bucket = "data-talant-us-east1"
     key    = "aws/iam/iam_state"
-    region = "us-west-1"
+    region = "us-east-1"
   }
 }
