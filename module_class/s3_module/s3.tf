@@ -3,7 +3,7 @@ provider "aws"{
 }
 
 module "bucket1" {
-  source = "./module"
+  source = "./modules"
   bucketname = "talant-module1"
 }
 
