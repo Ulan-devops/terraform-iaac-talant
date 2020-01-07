@@ -1,5 +1,5 @@
-environment = "dev" 
-s3_bucket = "wp-dev"          #Will be used to set backend.tf 
+environment = "dev"
+s3_bucket = "talant-wp-dev"          #Will be used to set backend.tf 
 s3_folder_project = "app"                   #Will be used to set backend.tf 
 s3_folder_region = "us-east-1"              #Will be used to set backend.tf 
 s3_folder_type = "state"                    #Will be used to set backend.tf 
