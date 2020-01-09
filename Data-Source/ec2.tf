@@ -2,6 +2,10 @@ provider "aws" {
     region = "us-east-2"
 }
 data "aws_ami" "ubuntu_app1" {
+    filter {
+        name = "root-device-type"
+        values = ["ebs"]
+}
     most_recent = true
     owners = ["099720109477"]
     }
