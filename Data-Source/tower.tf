@@ -52,7 +52,7 @@ resource "aws_instance" "ansible_tower" {
 
 resource "aws_route53_record" "tower" {
   zone_id = "ZFM6PTLZKE7ET"
-  name    = "tower.talantzon.com"
+  name    = "tower"
   type    = "A"
   ttl     = "300"
   records = [aws_instance.ansible_tower.public_ip]
