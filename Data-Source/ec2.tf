@@ -11,7 +11,7 @@ output "ami" {
 
 resource "aws_instance" "app1_vm" {
   ami           = "${data.aws_ami.ubuntu_app1.id}"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
 
   tags = {
     Name = "app1"
