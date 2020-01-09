@@ -1,7 +1,3 @@
-# identify provider
-provider "aws" {
-    region = "us-east-1"
-}
 
 # centos latest with the owner
 data "aws_ami" "centos" {
@@ -37,9 +33,9 @@ resource "aws_instance" "ansible_tower" {
 
   provisioner "remote-exec" {
       connection {
-        host        = self.public_ip
-        type        = "ssh"
-        user        = "centos"
+        host        = self.public_ip
+        type        = "ssh"
+        user        = "centos"
         private_key = file("~/.ssh/id_rsa")
         }
         inline = [
