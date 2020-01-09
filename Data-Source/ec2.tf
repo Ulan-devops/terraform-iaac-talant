@@ -6,7 +6,7 @@ data "aws_ami" "ubuntu_app1" {
     owners = ["099720109477"]
     }
 output "ami" {
-    value = "${data.aws_ami.ubuntu.id}"
+    value = "${data.aws_ami.ubuntu_app1.id}"
     }
 
 resource "aws_instance" "app1_vm" {
