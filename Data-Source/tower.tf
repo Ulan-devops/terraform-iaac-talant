@@ -14,7 +14,7 @@ data "aws_ami" "centos" {
     }
 
 # output AMI id
-output "ami" {
+output "centos_ami" {
     value = data.aws_ami.centos.id
     }
 
