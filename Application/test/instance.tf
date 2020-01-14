@@ -15,7 +15,7 @@ output "private_subnet" {
   value = data.terraform_remote_state.main.outputs.private_subnets[2]
 }
 
-[root@ip-172-31-45-232 app]
+
 
 # cat instance.tf
 resource "aws_instance" "aws" {
