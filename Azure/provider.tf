@@ -93,3 +93,59 @@ resource "azurerm_virtual_machine" "vm1" {
 }
 
 
+resource "azurerm_network_interface" "nic2" {
+  name = "nic2"
+  location = "westus2"
+  resource_group_name = "${azurerm_resource_group.web_server_rg.name}"
+  ip_configuration {
+    name = "testconfiguration2"
+    subnet_id = "${azurerm_subnet.private.id}"
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = "${azurerm_public_ip.IP2.id}"
+  }
+}
+
+resource "azurerm_public_ip" "IP2" {
+  name = "public_ip2"
+  location = "westus2"
+  resource_group_name = "${azurerm_resource_group.web_server_rg.name}"
+  allocation_method = "Dynamic"
+}
+
+
+resource "azurerm_virtual_machine" "vm2" {
+  name = "vm2"
+  location = "westus2"
+  resource_group_name = "${azurerm_resource_group.web_server_rg.name}"
+  network_interface_ids = ["${azurerm_network_interface.nic2.id}"]
+  vm_size = "Standard_DS1_v2"
+  storage_image_reference {
+  publisher = "OpenLogic"
+  offer = "CentOS"
+  sku = "7.5"
+  version = "latest"
+}
+storage_os_disk {
+  name = "myosdisk2"
+  caching = "ReadWrite"
+  create_option = "FromImage"
+  managed_disk_type = "Standard_LRS"
+}
+os_profile {
+  computer_name = "vm2"
+  admin_username = "centos"
+}
+os_profile_linux_config {
+  disable_password_authentication = true
+  ssh_keys {
+  path = "/home/centos/.ssh/authorized_keys"
+  key_data = " ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDz40FKT34MfAv+GpaM9N8BicMFtdk8IqvV7YVV18l9OVIb/HlAt8UK60FfJ3m3V4jeIl+h43NSJrEosYBi2MIG+On1P5RV8Jpw71yxtoBN2tynG/t7BquFs7aornkcJvajowLpxmhSQq8yREWTfxn70RYGUjWjaAqeyfLBtsrdBHV4KYHe1lvFRWW2GUIolBflBvMthlS36DGHWHdd/U7SVaD46rexDds32JENsyZTmqOncdIlYWE3qVQZe0ZZyqXd1L+T2iOsIYgusjbSbxRvvo2Ztyc07Na/rs4p5KMgMYpOo9L6FhWpoHV6TjH//5eTWuVbAAgkUtrShM+UAAx root@terraform"
+  }
+}
+tags {
+   environment = "staging"
+  }
+}
+
+
+
